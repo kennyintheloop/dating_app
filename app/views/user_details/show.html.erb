@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @user_detail.user_id %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @user_detail.country %>
+</p>
+
+<p>
+  <b>Zipcode:</b>
+  <%= @user_detail.zipcode %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @user_detail.city %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%= @user_detail.desc %>
+</p>
+
+<p>
+  <b>Is straight:</b>
+  <%= @user_detail.is_straight %>
+</p>
+
+<p>
+  <b>Gender:</b>
+  <%= @user_detail.gender %>
+</p>
+
+<p>
+  <b>Birthday:</b>
+  <%= @user_detail.birthday %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_detail_path(@user_detail) %> |
+<%= link_to 'Back', user_details_path %>

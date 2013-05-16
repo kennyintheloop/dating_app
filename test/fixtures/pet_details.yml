@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  type: 
+  gender: MyString
+  age: 1
+  name: MyString
+  desc: MyString
+  homepark: MyString
+  fav_toy: MyString
+  fav_park: MyString
+  type1: MyString
+  type2: MyString
+
+two:
+  user_id: 1
+  type: 
+  gender: MyString
+  age: 1
+  name: MyString
+  desc: MyString
+  homepark: MyString
+  fav_toy: MyString
+  fav_park: MyString
+  type1: MyString
+  type2: MyString

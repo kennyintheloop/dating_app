@@ -11,7 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130516042431) do
+ActiveRecord::Schema.define(:version => 20130516043937) do
+
+  create_table "pet_details", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "type"
+    t.string   "gender"
+    t.integer  "age"
+    t.string   "name"
+    t.string   "desc"
+    t.string   "homepark"
+    t.string   "fav_toy"
+    t.string   "fav_park"
+    t.string   "type1"
+    t.string   "type2"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "photo_albums", :force => true do |t|
     t.integer  "user_id"
@@ -20,6 +36,19 @@ ActiveRecord::Schema.define(:version => 20130516042431) do
     t.string   "file_desc"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "user_details", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "country"
+    t.string   "zipcode"
+    t.string   "city"
+    t.string   "desc"
+    t.string   "is_straight"
+    t.string   "gender"
+    t.date     "birthday"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|

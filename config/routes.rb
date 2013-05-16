@@ -1,4 +1,7 @@
 DatingApp::Application.routes.draw do
+  resources :user_details
+
+
   root :to => 'photo_albums#index'
   resources :photo_albums
 

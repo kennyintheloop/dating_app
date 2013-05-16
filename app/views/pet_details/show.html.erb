@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @pet_detail.user_id %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @pet_detail.type %>
+</p>
+
+<p>
+  <b>Gender:</b>
+  <%= @pet_detail.gender %>
+</p>
+
+<p>
+  <b>Age:</b>
+  <%= @pet_detail.age %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @pet_detail.name %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%= @pet_detail.desc %>
+</p>
+
+<p>
+  <b>Homepark:</b>
+  <%= @pet_detail.homepark %>
+</p>
+
+<p>
+  <b>Fav toy:</b>
+  <%= @pet_detail.fav_toy %>
+</p>
+
+<p>
+  <b>Fav park:</b>
+  <%= @pet_detail.fav_park %>
+</p>
+
+<p>
+  <b>Type1:</b>
+  <%= @pet_detail.type1 %>
+</p>
+
+<p>
+  <b>Type2:</b>
+  <%= @pet_detail.type2 %>
+</p>
+
+
+<%= link_to 'Edit', edit_pet_detail_path(@pet_detail) %> |
+<%= link_to 'Back', pet_details_path %>

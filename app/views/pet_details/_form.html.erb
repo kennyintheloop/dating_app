@@ -1,0 +1,61 @@
+<%= form_for(@pet_detail) do |f| %>
+  <% if @pet_detail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pet_detail.errors.count, "error") %> prohibited this pet_detail from being saved:</h2>
+
+      <ul>
+      <% @pet_detail.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br />
+    <%= f.text_field :type %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br />
+    <%= f.text_field :gender %>
+  </div>
+  <div class="field">
+    <%= f.label :age %><br />
+    <%= f.number_field :age %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :desc %><br />
+    <%= f.text_field :desc %>
+  </div>
+  <div class="field">
+    <%= f.label :homepark %><br />
+    <%= f.text_field :homepark %>
+  </div>
+  <div class="field">
+    <%= f.label :fav_toy %><br />
+    <%= f.text_field :fav_toy %>
+  </div>
+  <div class="field">
+    <%= f.label :fav_park %><br />
+    <%= f.text_field :fav_park %>
+  </div>
+  <div class="field">
+    <%= f.label :type1 %><br />
+    <%= f.text_field :type1 %>
+  </div>
+  <div class="field">
+    <%= f.label :type2 %><br />
+    <%= f.text_field :type2 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
