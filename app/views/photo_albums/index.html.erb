@@ -1,0 +1,29 @@
+<h1>Listing photo_albums</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>File name</th>
+    <th>File title</th>
+    <th>File desc</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @photo_albums.each do |photo_album| %>
+  <tr>
+    <td><%= photo_album.user_id %></td>
+    <td><%= photo_album.file_name %></td>
+    <td><%= photo_album.file_title %></td>
+    <td><%= photo_album.file_desc %></td>
+    <td><%= link_to 'Show', photo_album %></td>
+    <td><%= link_to 'Edit', edit_photo_album_path(photo_album) %></td>
+    <td><%= link_to 'Destroy', photo_album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Photo album', new_photo_album_path %>

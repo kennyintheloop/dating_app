@@ -1,4 +1,11 @@
 DatingApp::Application.routes.draw do
+  root :to => 'photo_albums#index'
+  resources :photo_albums
+
+
+  match 'auth/:provider/callback', to: 'sessions#create'
+  match 'auth/failure', to: redirect('/')
+  match 'signout', to: 'sessions#destroy', as: 'signout'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

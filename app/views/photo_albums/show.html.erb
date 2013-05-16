@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @photo_album.user_id %>
+</p>
+
+<p>
+  <b>File name:</b>
+  <%= @photo_album.file_name %>
+</p>
+
+<p>
+  <b>File title:</b>
+  <%= @photo_album.file_title %>
+</p>
+
+<p>
+  <b>File desc:</b>
+  <%= @photo_album.file_desc %>
+</p>
+
+
+<%= link_to 'Edit', edit_photo_album_path(@photo_album) %> |
+<%= link_to 'Back', photo_albums_path %>
