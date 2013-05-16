@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130516045749) do
+ActiveRecord::Schema.define(:version => 20130516053625) do
 
   create_table "pet_details", :force => true do |t|
     t.integer  "user_id"
-    t.string   "type"
+    t.string   "pet_type"
     t.string   "gender"
     t.integer  "age"
     t.string   "name"
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(:version => 20130516045749) do
     t.string   "homepark"
     t.string   "fav_toy"
     t.string   "fav_park"
-    t.string   "type1"
-    t.string   "type2"
+    t.string   "kind1"
+    t.string   "kind2"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

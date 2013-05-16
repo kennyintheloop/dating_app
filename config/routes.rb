@@ -2,7 +2,7 @@ DatingApp::Application.routes.draw do
   resources :user_details
   resources :pet_details
 
-  root :to => 'photo_albums#index'
+  root :to => 'user_details#index'
   resources :photo_albums
 
 

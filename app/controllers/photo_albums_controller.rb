@@ -1,6 +1,13 @@
 class PhotoAlbumsController < ApplicationController
-  # GET /photo_albums
-  # GET /photo_albums.json
+  before_filter :authorize_user, only: [:edit, :update, :destroy]
+
+  def authorize_user
+    photo_album = PhotoAlbum.find(params[:id])
+
+    if photo_album.user_id != current_user.id
+      redirect_to photo_albums_url, notice: "Something went wrong."
+    end
+  end
   def index
     @photo_albums = PhotoAlbum.all
 

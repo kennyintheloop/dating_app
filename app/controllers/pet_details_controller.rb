@@ -1,6 +1,14 @@
 class PetDetailsController < ApplicationController
-  # GET /pet_details
-  # GET /pet_details.json
+
+  before_filter :authorize_user, only: [:edit, :update, :destroy]
+
+  def authorize_user
+    pet_detail = PetDetail.find(params[:id])
+
+    if pet_detail.user_id != current_user.id
+      redirect_to pet_details_url, notice: "Something went wrong."
+    end
+  end
   def index
     @pet_details = PetDetail.all
 

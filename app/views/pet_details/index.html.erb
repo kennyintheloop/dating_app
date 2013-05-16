@@ -1,43 +1,53 @@
-<h1>Listing pet_details</h1>
 
-<table>
-  <tr>
-    <th>User</th>
-    <th>Type</th>
-    <th>Gender</th>
-    <th>Age</th>
-    <th>Name</th>
-    <th>Desc</th>
-    <th>Homepark</th>
-    <th>Fav toy</th>
-    <th>Fav park</th>
-    <th>Type1</th>
-    <th>Type2</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+      <div class="demo-headline">
+        <h1 class="demo-logo">
+          <div class="logo"></div>
+          Bow Wow!
+          <small>Presented by Kenny Chung</small>
+        </h1>
+      </div> <!-- /demo-headline -->
 
-<% @pet_details.each do |pet_detail| %>
-  <tr>
-    <td><%= pet_detail.user_id %></td>
-    <td><%= pet_detail.type %></td>
-    <td><%= pet_detail.gender %></td>
-    <td><%= pet_detail.age %></td>
-    <td><%= pet_detail.name %></td>
-    <td><%= pet_detail.desc %></td>
-    <td><%= pet_detail.homepark %></td>
-    <td><%= pet_detail.fav_toy %></td>
-    <td><%= pet_detail.fav_park %></td>
-    <td><%= pet_detail.type1 %></td>
-    <td><%= pet_detail.type2 %></td>
-    <td><%= link_to 'Show', pet_detail %></td>
-    <td><%= link_to 'Edit', edit_pet_detail_path(pet_detail) %></td>
-    <td><%= link_to 'Destroy', pet_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+    <h1>Listing pet_details</h1>
 
-<br />
+    <table>
+      <tr>
+        <th>User</th>
+        <th>Type</th>
+        <th>Gender</th>
+        <th>Age</th>
+        <th>Name</th>
+        <th>Desc</th>
+        <th>Homepark</th>
+        <th>Fav toy</th>
+        <th>Fav park</th>
+        <th>Type1</th>
+        <th>Type2</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
 
-<%= link_to 'New Pet detail', new_pet_detail_path %>
+    <% @pet_details.each do |pet_detail| %>
+      <tr>
+        <td><%= pet_detail.user_id %></td>
+        <td><%= pet_detail.pet_type %></td>
+        <td><%= pet_detail.gender %></td>
+        <td><%= pet_detail.age %></td>
+        <td><%= pet_detail.name %></td>
+        <td><%= pet_detail.desc %></td>
+        <td><%= pet_detail.homepark %></td>
+        <td><%= pet_detail.fav_toy %></td>
+        <td><%= pet_detail.fav_park %></td>
+        <td><%= pet_detail.kind1 %></td>
+        <td><%= pet_detail.kind2 %></td>
+        <td><%= link_to 'Show', pet_detail %></td>
+        <td><%= link_to 'Edit', edit_pet_detail_path(pet_detail) %></td>
+        <td><%= link_to 'Destroy', pet_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </table>
+
+    <br />
+
+    <%= link_to 'New Pet detail', new_pet_detail_path %>
+
