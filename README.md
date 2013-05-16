@@ -1,10 +1,10 @@
-V 1. 10 pts) Demonstrate best-practice use of Rails MVC architecture
-V 2. 10 pts) Use all four HTTP methods at least once
-V 3. 10 pts) Allow users to sign up, sign in, and sign out using cookie-based sessions.
-V 4. 5 pts) User accounts must use industry-strength password encryption or OAuthcompliant
+  V 1. 10 pts) Demonstrate best-practice use of Rails MVC architecture
+  V 2. 10 pts) Use all four HTTP methods at least once
+  V 3. 10 pts) Allow users to sign up, sign in, and sign out using cookie-based sessions.
+  V 4. 5 pts) User accounts must use industry-strength password encryption or OAuthcompliant
 authentication data exchange.
-5. 5 pts) Contain at least six models
-6. 5 pts) Contain at least one many-to-many association
+  V 5. 5 pts) Contain at least six models
+  V 6. 5 pts) Contain at least one many-to-many association
 7. 5 pts) Use at least three model callbacks
 8. 5 pts) Use at least three validation rules
 9. 5 pts) Maintain HTTP session state (e.g. user authentication)
