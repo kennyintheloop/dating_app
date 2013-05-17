@@ -2,8 +2,8 @@ class UserDetailsController < ApplicationController
   # GET /user_details
   # GET /user_details.json
   def index
-    @user_details = UserDetail.all
-
+    #@user_details = UserDetail.all
+    @user_details = UserDetail.where("user_id = ?", current_user.id)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @user_details }
@@ -41,7 +41,7 @@ class UserDetailsController < ApplicationController
   # POST /user_details.json
   def create
     @user_detail = UserDetail.new(params[:user_detail])
-
+    @user_detail.user_id = current_user.id
     respond_to do |format|
       if @user_detail.save
         format.html { redirect_to @user_detail, notice: 'User detail was successfully created.' }

@@ -1,4 +1,13 @@
 DatingApp::Application.routes.draw do
+  resources :park_votes
+
+
+  resources :dog_parks
+
+
+  resources :videos
+
+
   resources :user_details
   resources :pet_details
 

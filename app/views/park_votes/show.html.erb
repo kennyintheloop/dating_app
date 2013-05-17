@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @park_vote.user_id %>
+</p>
+
+<p>
+  <b>Park:</b>
+  <%= @park_vote.park_id %>
+</p>
+
+<p>
+  <b>User comment:</b>
+  <%= @park_vote.user_comment %>
+</p>
+
+<p>
+  <b>Rating:</b>
+  <%= @park_vote.rating %>
+</p>
+
+
+<%= link_to 'Edit', edit_park_vote_path(@park_vote) %> |
+<%= link_to 'Back', park_votes_path %>

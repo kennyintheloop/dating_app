@@ -13,4 +13,5 @@ class User < ActiveRecord::Base
   end
   has_many :pet_details
   has_one :user_details
+  validates :email, :uniqueness => true
 end

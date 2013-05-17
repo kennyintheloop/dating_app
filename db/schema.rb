@@ -11,7 +11,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130516053625) do
+ActiveRecord::Schema.define(:version => 20130517052434) do
+
+  create_table "countries", :force => true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "dog_parks", :force => true do |t|
+    t.string   "name"
+    t.string   "addr"
+    t.string   "lati"
+    t.string   "longi"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "park_votes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "park_id"
+    t.string   "user_comment"
+    t.integer  "rating"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "pet_details", :force => true do |t|
     t.integer  "user_id"
@@ -60,6 +85,15 @@ ActiveRecord::Schema.define(:version => 20130516053625) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.string   "email"
+  end
+
+  create_table "videos", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "video_title"
+    t.string   "video_link"
+    t.integer  "video_numb_view"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
 end

@@ -1,0 +1,29 @@
+<h1>Listing park_votes</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Park</th>
+    <th>User comment</th>
+    <th>Rating</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @park_votes.each do |park_vote| %>
+  <tr>
+    <td><%= park_vote.user_id %></td>
+    <td><%= park_vote.park_id %></td>
+    <td><%= park_vote.user_comment %></td>
+    <td><%= park_vote.rating %></td>
+    <td><%= link_to 'Show', park_vote %></td>
+    <td><%= link_to 'Edit', edit_park_vote_path(park_vote) %></td>
+    <td><%= link_to 'Destroy', park_vote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Park vote', new_park_vote_path %>

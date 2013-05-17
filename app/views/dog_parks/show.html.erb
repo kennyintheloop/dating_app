@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @dog_park.name %>
+</p>
+
+<p>
+  <b>Addr:</b>
+  <%= @dog_park.addr %>
+</p>
+
+<p>
+  <b>Lati:</b>
+  <%= @dog_park.lati %>
+</p>
+
+<p>
+  <b>Longi:</b>
+  <%= @dog_park.longi %>
+</p>
+
+
+<%= link_to 'Edit', edit_dog_park_path(@dog_park) %> |
+<%= link_to 'Back', dog_parks_path %>

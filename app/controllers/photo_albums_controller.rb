@@ -48,7 +48,7 @@ class PhotoAlbumsController < ApplicationController
   # POST /photo_albums.json
   def create
     @photo_album = PhotoAlbum.new(params[:photo_album])
-
+    @photo_album.user_id = current_user.id
     respond_to do |format|
       if @photo_album.save
         format.html { redirect_to @photo_album, notice: 'Photo album was successfully created.' }

@@ -15,7 +15,7 @@
     <div class="span6">
     <% if current_user %>
       Signed in as <strong><%= current_user.name %></strong>!
-
+      <%= current_user.id %>
       <%= link_to "Sign out", signout_path, id: "sign_out", class: "btn btn-large btn-block btn-primary" %>
     <% else %>
       <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-large btn-block btn-primary"  %>
@@ -24,6 +24,13 @@
     <div class="span3"></div>
   </div>
 </div>
+<nav>
+    <%= link_to "User Profile", user_details_url %> |
+    <%= link_to "Pet Profile", pet_details_url %> |
+    <%= link_to "Photos", photo_albums_url %> |
+    <%= link_to "Videos", videos_url %> |
+    <%= link_to "Park Votes", park_votes_url %>
+  </nav>
 <%= yield %>
 </div>
 </body>
