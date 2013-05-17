@@ -5,5 +5,4 @@ class ParkVote < ActiveRecord::Base
 
   validates :user, presence: true
   validates :user_id, :uniqueness => true
-  validates :dog_park, presence: true
 end

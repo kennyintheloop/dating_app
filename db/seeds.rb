@@ -15,3 +15,8 @@ open("http://openconcept.ca/sites/openconcept.ca/files/country_code_drupal_0.txt
     Country.create!(:name => name, :code => code)
   end
 end
+
+HumanGenders.delete_all
+HumanRelationships.delete_all
+HumanGenders.create!([{:gender => 'Female'},{:gender => 'Male'}])
+HumanRelationships.create!([{:relationship => 'Straight'},{:relationship => 'Gay/Lesbian'}])

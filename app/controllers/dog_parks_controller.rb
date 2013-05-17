@@ -41,7 +41,7 @@ class DogParksController < ApplicationController
   # POST /dog_parks.json
   def create
     @dog_park = DogPark.new(params[:dog_park])
-    @dog_park.user_id = current_user.id
+
     respond_to do |format|
       if @dog_park.save
         format.html { redirect_to @dog_park, notice: 'Dog park was successfully created.' }

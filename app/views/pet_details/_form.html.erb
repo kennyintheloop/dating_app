@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :gender %><br />
-    <%= f.text_field :gender %>
+    <%= f.collection_select :gender, HumanGenders.all, :gender, :gender %>
   </div>
   <div class="field">
     <%= f.label :age %><br />

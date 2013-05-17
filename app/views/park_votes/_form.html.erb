@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :park_id %><br />
-    <%= f.number_field :park_id %>
+    <%= f.collection_select :park_id, DogPark.all, :name, :name %>
   </div>
   <div class="field">
     <%= f.label :user_comment %><br />
