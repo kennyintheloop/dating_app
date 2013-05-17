@@ -14,9 +14,9 @@
 <% @dog_parks.each do |dog_park| %>
   <tr>
     <td><%= dog_park.name %></td>
-    <td><%= dog_park.addr %></td>
-    <td><%= dog_park.lati %></td>
-    <td><%= dog_park.longi %></td>
+    <td><%= dog_park.address %></td>
+    <td><%= dog_park.latitude %></td>
+    <td><%= dog_park.longitude %></td>
     <td><%= link_to 'Show', dog_park %></td>
     <td><%= link_to 'Edit', edit_dog_park_path(dog_park) %></td>
     <td><%= link_to 'Destroy', dog_park, method: :delete, data: { confirm: 'Are you sure?' } %></td>

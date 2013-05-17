@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= yield :head %>
 </head>
 <body>
 <div class="container">
@@ -34,5 +35,6 @@
   </nav>
 <%= yield %>
 </div>
+<%= yield :scripts %>
 </body>
 </html>

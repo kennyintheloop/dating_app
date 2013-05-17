@@ -11,20 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130517054708) do
+ActiveRecord::Schema.define(:version => 20130517074805) do
+
+  create_table "Dog_parks", :force => true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.float    "latitude",   :limit => 255
+    t.float    "longitude",  :limit => 255
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.boolean  "gmaps"
+  end
 
   create_table "countries", :force => true do |t|
     t.string   "name"
     t.string   "code"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "dog_parks", :force => true do |t|
-    t.string   "name"
-    t.string   "addr"
-    t.string   "lati"
-    t.string   "longi"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

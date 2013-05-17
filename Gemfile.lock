@@ -45,6 +45,7 @@ GEM
     figaro (0.6.4)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    gmaps4rails (1.5.6)
     hashie (2.0.5)
     hike (1.2.2)
     httpauth (0.2.0)
@@ -129,6 +130,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   figaro
+  gmaps4rails
   jquery-rails
   omniauth-facebook
   rails (= 3.2.13)

@@ -14,7 +14,7 @@ class DogParksController < ApplicationController
   # GET /dog_parks/1.json
   def show
     @dog_park = DogPark.find(params[:id])
-
+    @json = @dog_park.to_gmaps4rails
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @dog_park }

@@ -3,11 +3,13 @@ class UserDetailsController < ApplicationController
   # GET /user_details.json
   def index
     #@user_details = UserDetail.all
-    @user_details = UserDetail.where("user_id = ?", current_user.id)
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @user_details }
+    if current_user.present?
+      @user_details = UserDetail.where("user_id = ?", current_user.id)
     end
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @user_details }
+      end
   end
 
   # GET /user_details/1

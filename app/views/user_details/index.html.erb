@@ -6,7 +6,7 @@ USER NAME
 USER LOCATION
 </h2>
 <h1>LListing user_details</h1>
-
+<% if current_user.present? %>
 <table>
   <tr>
     <th>User</th>
@@ -38,7 +38,7 @@ USER LOCATION
   </tr>
 <% end %>
 </table>
-
+<% end %>
 <br />
 
 <%= link_to 'New User detail', new_user_detail_path %>
