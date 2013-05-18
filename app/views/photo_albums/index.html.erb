@@ -1,3 +1,4 @@
+<% if current_user.present? %>
 <h1>Listing photo_albums</h1>
 <% @photo_albums.each do |photo_album| %>
 <% @user_d = UserDetail.where("user_id = ?", photo_album.user_id).first %>
@@ -15,12 +16,14 @@
       </div>
       <div class ="span9">
         <dl class="palette palette-info">
-          <dt><%= photo_album.file_name %></dt>
-          <dd><%= photo_album.file_desc %>Yrs old</dd>
+          <dt>Photo Name:<%= photo_album.file_name %></dt>
+          <dd>Description:<%= photo_album.file_desc %></dd>
           <%= image_tag photo_album.photo.url() %>
           <td><%= link_to 'Show', photo_album %></td>
+          <% if photo_album.user_id == current_user.id %>
         <td><%= link_to 'Edit', edit_photo_album_path(photo_album) %></td>
         <td><%= link_to 'Destroy', photo_album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
         </dl>
       </div>
     </div>
@@ -29,3 +32,7 @@
     <br />
 
 <%= link_to 'New Photo album', new_photo_album_path %>
+
+<% else %>
+<h1>Please sign in to see pictures</h1>
+<% end %>

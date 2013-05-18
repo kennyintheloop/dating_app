@@ -1,8 +1,16 @@
 class UserDetailsController < ApplicationController
+  before_filter :authorize_user, only: [:edit, :update, :destroy]
   before_filter :authorized_signed_in, only: [:new,:create,:edit, :update, :destroy]
   def authorized_signed_in
     if not current_user.present?
       redirect_to '/auth/facebook'
+    end
+  end
+  def authorize_user
+    user_detail = UserDetail.find(params[:id])
+
+    if user_detail.user_id != current_user.id
+      redirect_to edit_user_detail_url, notice: "Something went wrong."
     end
   end
   # GET /user_details

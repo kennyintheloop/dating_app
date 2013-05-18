@@ -27,7 +27,7 @@
 <br />
 
 <%= link_to 'Add your profile detail', new_user_detail_path %>
-<% if current_user.present? %>
+<% if @my_user.present? %>
   <%= link_to 'Edit', edit_user_detail_path(@my_user.first) %>
 <% end %>
 <center>

@@ -1,10 +1,18 @@
 class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
+  before_filter :authorize_user, only: [:edit, :update, :destroy]
   before_filter :authorized_signed_in, only: [:new,:create,:edit, :update, :destroy]
   def authorized_signed_in
     if not current_user.present?
       redirect_to '/auth/facebook'
+    end
+  end
+  def authorize_user
+    video = Video.find(params[:id])
+
+    if video.user_id != current_user.id
+      redirect_to videos_url, notice: "Something went wrong."
     end
   end
   def index

@@ -1,6 +1,8 @@
+<% if current_user.present? %>
 <h1>Listing dog_parks</h1>
 <% @dog_parks.each do |dog_park| %>
     <% @my_like = ParkVote.where("user_id = ? AND park_id =?", current_user.id,dog_park.id).first %>
+    <% @votes = ParkVote.where("park_id =?", dog_park.id).count %>
     <div class="row">
       <div class ="span3">
         <dl class="palette palette-firm">
@@ -13,7 +15,7 @@
           <dt><%= dog_park.name %></dt>
           <dd><%= dog_park.address %></dd>
           <iframe width="450" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/?q=<%= dog_park.latitude %>,<%= dog_park.longitude %>&amp;ie=UTF8&amp;t=m&amp;z=14&amp;ll=<%= dog_park.latitude %>,<%= dog_park.longitude %>&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/?q=-37.866963,144.980615&amp;ie=UTF8&amp;t=m&amp;z=14&amp;ll=-37.866963,144.980615&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>
-          <td><%= link_to 'Show', dog_park %></td>
+          <td><%= @votes %> likes</td>
           <% if @my_like.present? %>
           <p>LIKED!</p>
           <% else %>
@@ -23,7 +25,6 @@
           :park_id => dog_park.id,
           :rating => 5 }, :method => :post %></td>
           <%end %>
-        <td><%= link_to 'Edit', edit_dog_park_path(dog_park) %></td>
         <td><%= link_to 'Destroy', dog_park, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </dl>
       </div>
@@ -33,3 +34,6 @@
     <br />
 
 <%= link_to 'New Dog park', new_dog_park_path %>
+<% else %>
+<h1>Please sign in to see dog parks</h1>
+<% end %>

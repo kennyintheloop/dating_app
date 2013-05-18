@@ -1,3 +1,4 @@
+<% if current_user.present? %>
     <h1>Listing pet_details</h1>
     <% @pet_details.each do |pet_detail| %>
       <% @user_d = User.find(pet_detail.user_id) %>
@@ -18,8 +19,10 @@
           <dd>FAV. PARK:<%= pet_detail.fav_park %></dd>
           <dd>FAV. TOY:<%= pet_detail.fav_toy %></dd>
           <td><%= link_to 'Show', pet_detail %></td>
+        <% if pet_detail.user_id == current_user.id %>
         <td><%= link_to 'Edit', edit_pet_detail_path(pet_detail) %></td>
         <td><%= link_to 'Destroy', pet_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
         </dl>
       </div>
     </div>
@@ -28,4 +31,6 @@
     <br />
 
     <%= link_to 'New Pet detail', new_pet_detail_path %>
-
+<% else %>
+<h1>Please sign in to see pets</h1>
+<% end %>
