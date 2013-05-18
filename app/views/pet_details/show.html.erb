@@ -1,6 +1,6 @@
 SHOW DETAILS OF THE SELECTED PET HERE
 <p id="notice"><%= notice %></p>
-
+<%= image_tag @pet_detail.photo.url() %>
 <p>
   <b>User:</b>
   <%= @pet_detail.user_id %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130517074805) do
+ActiveRecord::Schema.define(:version => 20130517195628) do
 
   create_table "Dog_parks", :force => true do |t|
     t.string   "name"
@@ -63,8 +63,12 @@ ActiveRecord::Schema.define(:version => 20130517074805) do
     t.string   "fav_park"
     t.string   "kind1"
     t.string   "kind2"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "photo_albums", :force => true do |t|
@@ -72,8 +76,12 @@ ActiveRecord::Schema.define(:version => 20130517074805) do
     t.string   "file_name"
     t.string   "file_title"
     t.string   "file_desc"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "user_details", :force => true do |t|

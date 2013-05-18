@@ -1,29 +1,31 @@
 <h1>Listing videos</h1>
-
-<table>
-  <tr>
-    <th>User</th>
-    <th>Video title</th>
-    <th>Video link</th>
-    <th>Video numb view</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @videos.each do |video| %>
-  <tr>
-    <td><%= video.user_id %></td>
-    <td><%= video.video_title %></td>
-    <td><%= video.video_link %></td>
-    <td><%= video.video_numb_view %></td>
-    <td><%= link_to 'Show', video %></td>
-    <td><%= link_to 'Edit', edit_video_path(video) %></td>
-    <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
+  <% @user_d = UserDetail.where("user_id = ?", video.user_id).first %>
+  <% @user_main = User.find(video.user_id) %>
+    <div class="row">
+      <div class ="span3">
+        <dl class="palette palette-firm">
+          <%= @user_main.name %>
+          <% if @user_d.gender == "Male" %>
+            <%= image_tag 'male.gif' %>
+          <% else %>
+            <%= image_tag 'female.gif' %>
+          <% end %>
+        </dl>
+      </div>
+      <div class ="span9">
+        <dl class="palette palette-info">
+          <dt><%= video.video_title %></dt>
+          <iframe width="420" height="315" src="http://www.youtube.com/embed/<%= video.video_link %>" frameborder="0" allowfullscreen></iframe>
+          <dd><%= video.video_numb_view %></dd>
+          <td><%= link_to 'Show', video %></td>
+        <td><%= link_to 'Edit', edit_video_path(video) %></td>
+        <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </dl>
+      </div>
+    </div>
+    <br />
+    <% end %>
+    <br />
 
 <%= link_to 'New Video', new_video_path %>

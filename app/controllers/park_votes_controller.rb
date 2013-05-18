@@ -1,6 +1,12 @@
 class ParkVotesController < ApplicationController
   # GET /park_votes
   # GET /park_votes.json
+  before_filter :authorized_signed_in, only: [:new,:create,:edit, :update, :destroy]
+  def authorized_signed_in
+    if not current_user.present?
+      redirect_to '/auth/facebook'
+    end
+  end
   def index
     @park_votes = ParkVote.all
 
@@ -40,11 +46,13 @@ class ParkVotesController < ApplicationController
   # POST /park_votes
   # POST /park_votes.json
   def create
-    @park_vote = ParkVote.new(params[:park_vote])
+    @park_vote = ParkVote.new()
     @park_vote.user_id = current_user.id
+    @park_vote.park_id = params[:park_id]
+    @park_vote.rating = params[:rating]
     respond_to do |format|
       if @park_vote.save
-        format.html { redirect_to @park_vote, notice: 'Park vote was successfully created.' }
+        format.html { redirect_to dog_parks_url, notice: 'Park vote was successfully created.' }
         format.json { render json: @park_vote, status: :created, location: @park_vote }
       else
         format.html { render action: "new" }

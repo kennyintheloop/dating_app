@@ -1,6 +1,12 @@
 class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
+  before_filter :authorized_signed_in, only: [:new,:create,:edit, :update, :destroy]
+  def authorized_signed_in
+    if not current_user.present?
+      redirect_to '/auth/facebook'
+    end
+  end
   def index
     @videos = Video.all
 

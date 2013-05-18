@@ -1,9 +1,22 @@
 // Some general UI pack related JS
-
 $(function () {
     // Custom selects
     $("select").dropkick();
 });
+
+var gMapsLoaded = false;
+window.gMapsCallback = function(){
+    gMapsLoaded = true;
+    $(window).trigger('gMapsLoaded');
+}
+window.loadGoogleMaps = function(){
+    if(gMapsLoaded) return window.gMapsCallback();
+    var script_tag = document.createElement('script');
+    script_tag.setAttribute("type","text/javascript");
+    script_tag.setAttribute("src","http://maps.google.com/maps/api/js?sensor=false&callback=gMapsCallback");
+    (document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script_tag);
+}
+
 
 $(document).ready(function() {
     // Todo list
@@ -46,6 +59,37 @@ $(document).ready(function() {
     $("a[href='#']").click(function() {
         return false
     });
-
+    $("a#btn-map").click(function(){
+        var name = $('#dog_park_name').val();
+        var addr = $('#dog_park_address').val();
+        //alert(name+addr);
+        codeAddress();
+    });
+    var geocoder;
+    function initialize(){
+        geocoder = new google.maps.Geocoder();
+        var mapOptions = {
+            zoom: 14,
+            center: new google.maps.LatLng(
+41.88837, -87.635364),
+            mapTypeId: google.maps.MapTypeId.ROADMAP};
+        map = new google.maps.Map(document.getElementById('map_canvas'),mapOptions);
+    }
+    function codeAddress() {
+        var address = $('#dog_park_address').val();
+        geocoder.geocode( { 'address': address}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+            });
+          } else {
+            alert("Geocode was not successful for the following reason: " + status);
+          }
+        });
+      }
+    $(window).bind('gMapsLoaded', initialize);
+    window.loadGoogleMaps();
 });
 

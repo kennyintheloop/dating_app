@@ -1,7 +1,12 @@
 class PetDetailsController < ApplicationController
 
   before_filter :authorize_user, only: [:edit, :update, :destroy]
-
+  before_filter :authorized_signed_in, only: [:new,:create,:edit, :update, :destroy]
+  def authorized_signed_in
+    if not current_user.present?
+      redirect_to '/auth/facebook'
+    end
+  end
   def authorize_user
     pet_detail = PetDetail.find(params[:id])
 
@@ -49,7 +54,7 @@ class PetDetailsController < ApplicationController
   # POST /pet_details.json
   def create
     @pet_detail = PetDetail.new(params[:pet_detail])
-
+    @pet_detail.user_id = current_user.id
     respond_to do |format|
       if @pet_detail.save
         format.html { redirect_to @pet_detail, notice: 'Pet detail was successfully created.' }

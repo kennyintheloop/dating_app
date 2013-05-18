@@ -1,11 +1,23 @@
 class UserDetailsController < ApplicationController
+  before_filter :authorized_signed_in, only: [:new,:create,:edit, :update, :destroy]
+  def authorized_signed_in
+    if not current_user.present?
+      redirect_to '/auth/facebook'
+    end
+  end
   # GET /user_details
   # GET /user_details.json
   def index
     #@user_details = UserDetail.all
+    require 'open-uri'
+    require 'json'
+    @weatherurl = open('http://api.worldweatheronline.com/free/v1/weather.ashx?q=Chicago&format=json&num_of_days=5&key=kfk3bcmywtmy9p9qetk3yfey').read
+    @json = JSON.parse(@weatherurl)
     if current_user.present?
-      @user_details = UserDetail.where("user_id = ?", current_user.id)
+      @my_user = UserDetail.where("user_id = ?", current_user.id)
     end
+
+    @user_details = UserDetail.all
       respond_to do |format|
         format.html # index.html.erb
         format.json { render json: @user_details }

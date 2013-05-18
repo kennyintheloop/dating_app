@@ -1,44 +1,41 @@
-<h2>
-SHOW USER PET IMAGES HERE WITH SIMPLE DETAILS
-PET IMAGE
-PET DETAIL
-USER NAME
-USER LOCATION
-</h2>
-<h1>LListing user_details</h1>
+<h1>Bow Wow Members</h1>
 <% if current_user.present? %>
-<table>
-  <tr>
-    <th>User</th>
-    <th>Country</th>
-    <th>Zipcode</th>
-    <th>City</th>
-    <th>Desc</th>
-    <th>Is straight</th>
-    <th>Gender</th>
-    <th>Birthday</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @user_details.each do |user_detail| %>
-  <tr>
-    <td><%= user_detail.user_id %></td>
-    <td><%= user_detail.country %></td>
-    <td><%= user_detail.zipcode %></td>
-    <td><%= user_detail.city %></td>
-    <td><%= user_detail.desc %></td>
-    <td><%= user_detail.is_straight %></td>
-    <td><%= user_detail.gender %></td>
-    <td><%= user_detail.birthday %></td>
-    <td><%= link_to 'Show', user_detail %></td>
-    <td><%= link_to 'Edit', edit_user_detail_path(user_detail) %></td>
-    <td><%= link_to 'Destroy', user_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<% @user_d = User.find(user_detail.user_id) %>
+<div class="row">
+  <div class ="span3">
+    <dl class="palette palette-firm">
+      <% if user_detail.gender == "Male" %>
+        <%= image_tag 'male.gif' %>
+      <% else %>
+        <%= image_tag 'female.gif' %>
+      <% end %>
+    </dl>
+  </div>
+  <div class ="span9">
+    <dl class="palette palette-info">
+      <dt><%=@user_d.name %></dt>
+      <dd><%= user_detail.gender %></dd>
+      <dd><%= user_detail.desc %></dd>
+      <dd><%= user_detail.is_straight %></dd>
+      <td><%= link_to 'Show', user_detail %></td>
+    </dl>
+  </div>
+</div>
 <% end %>
-</table>
 <% end %>
 <br />
 
-<%= link_to 'New User detail', new_user_detail_path %>
+<%= link_to 'Add your profile detail', new_user_detail_path %>
+<% if current_user.present? %>
+  <%= link_to 'Edit', edit_user_detail_path(@my_user.first) %>
+<% end %>
+<center>
+<h1>Current Weather in chicago </h1>
+ <% degree = @json["data"]["current_condition"][0]["temp_F"] %>
+  <b><%= degree%>F </b><br>
+  <%= image_tag(@json["data"]["current_condition"][0]["weatherIconUrl"][0]["value"]) %>
+  <% if degree.to_i > 20 %>
+    <p>Weather is great! Go walk your dog and date someone! </p>
+  <% end %>
+</center>

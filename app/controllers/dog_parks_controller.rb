@@ -1,4 +1,10 @@
 class DogParksController < ApplicationController
+  before_filter :authorized_signed_in, only: [:new,:create,:edit, :update, :destroy]
+  def authorized_signed_in
+    if not current_user.present?
+      redirect_to '/auth/facebook'
+    end
+  end
   # GET /dog_parks
   # GET /dog_parks.json
   def index
@@ -9,7 +15,6 @@ class DogParksController < ApplicationController
       format.json { render json: @dog_parks }
     end
   end
-
   # GET /dog_parks/1
   # GET /dog_parks/1.json
   def show
@@ -52,7 +57,6 @@ class DogParksController < ApplicationController
       end
     end
   end
-
   # PUT /dog_parks/1
   # PUT /dog_parks/1.json
   def update

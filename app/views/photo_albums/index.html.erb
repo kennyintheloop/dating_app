@@ -1,29 +1,31 @@
 <h1>Listing photo_albums</h1>
-
-<table>
-  <tr>
-    <th>User</th>
-    <th>File name</th>
-    <th>File title</th>
-    <th>File desc</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @photo_albums.each do |photo_album| %>
-  <tr>
-    <td><%= photo_album.user_id %></td>
-    <td><%= photo_album.file_name %></td>
-    <td><%= photo_album.file_title %></td>
-    <td><%= photo_album.file_desc %></td>
-    <td><%= link_to 'Show', photo_album %></td>
-    <td><%= link_to 'Edit', edit_photo_album_path(photo_album) %></td>
-    <td><%= link_to 'Destroy', photo_album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
+<% @user_d = UserDetail.where("user_id = ?", photo_album.user_id).first %>
+<% @user_main = User.find(photo_album.user_id) %>
+    <div class="row">
+      <div class ="span3">
+        <dl class="palette palette-firm">
+          <%= @user_main.name %>
+          <% if @user_d.gender == "Male" %>
+            <%= image_tag 'male.gif' %>
+          <% else %>
+            <%= image_tag 'female.gif' %>
+          <% end %>
+        </dl>
+      </div>
+      <div class ="span9">
+        <dl class="palette palette-info">
+          <dt><%= photo_album.file_name %></dt>
+          <dd><%= photo_album.file_desc %>Yrs old</dd>
+          <%= image_tag photo_album.photo.url() %>
+          <td><%= link_to 'Show', photo_album %></td>
+        <td><%= link_to 'Edit', edit_photo_album_path(photo_album) %></td>
+        <td><%= link_to 'Destroy', photo_album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </dl>
+      </div>
+    </div>
+    <br />
+    <% end %>
+    <br />
 
 <%= link_to 'New Photo album', new_photo_album_path %>
