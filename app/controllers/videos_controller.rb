@@ -1,6 +1,6 @@
 class VideosController < ApplicationController
-  # GET /videos
-  # GET /videos.json
+  #authorized_signed_in for giving right granted accesses to the users
+  #Make sure that users are signed in before adding, deleting or editing
   before_filter :authorize_user, only: [:edit, :update, :destroy]
   before_filter :authorized_signed_in, only: [:new,:create,:edit, :update, :destroy]
   def authorized_signed_in

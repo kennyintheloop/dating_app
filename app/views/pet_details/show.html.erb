@@ -1,11 +1,10 @@
-SHOW DETAILS OF THE SELECTED PET HERE
+<h2>How cute!! More detail on this pet..</h2>
 <p id="notice"><%= notice %></p>
 <%= image_tag @pet_detail.photo.url() %>
 <p>
-  <b>User:</b>
-  <%= @pet_detail.user_id %>
+  <b>Name:</b>
+  <%= @pet_detail.name %>
 </p>
-
 <p>
   <b>Type:</b>
   <%= @pet_detail.pet_type %>
@@ -21,10 +20,7 @@ SHOW DETAILS OF THE SELECTED PET HERE
   <%= @pet_detail.age %>
 </p>
 
-<p>
-  <b>Name:</b>
-  <%= @pet_detail.name %>
-</p>
+
 
 <p>
   <b>Desc:</b>

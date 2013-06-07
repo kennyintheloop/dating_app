@@ -1,6 +1,5 @@
 class ParkVotesController < ApplicationController
-  # GET /park_votes
-  # GET /park_votes.json
+  #authorized_signed_in for giving right granted accesses to the users
   before_filter :authorized_signed_in, only: [:new,:create,:edit, :update, :destroy]
   def authorized_signed_in
     if not current_user.present?

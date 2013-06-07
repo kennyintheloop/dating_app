@@ -1,4 +1,4 @@
-<h1>Bow Wow Members</h1>
+<h1>Find Your fellow Bow Wow members!</h1>
 <% if current_user.present? %>
 <% @user_details.each do |user_detail| %>
 <% @user_d = User.find(user_detail.user_id) %>
@@ -25,8 +25,12 @@
 <% end %>
 <% end %>
 <br />
-
-<%= link_to 'Add your profile detail', new_user_detail_path %>
+<% if current_user.present? %>
+  <% user_detail = UserDetail.where('user_id = ?',current_user.id) %>
+  <% if user_detail.first == nil %>
+    <%= link_to 'Add your profile detail', new_user_detail_path %>
+  <% end %>
+<% end %>
 <% if @my_user.present? %>
   <%= link_to 'Edit', edit_user_detail_path(@my_user.first) %>
 <% end %>

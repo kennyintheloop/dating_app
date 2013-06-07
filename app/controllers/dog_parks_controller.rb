@@ -5,8 +5,7 @@ class DogParksController < ApplicationController
       redirect_to '/auth/facebook'
     end
   end
-  # GET /dog_parks
-  # GET /dog_parks.json
+  #All of the dog parks will be shown on index page
   def index
     @dog_parks = DogPark.all
 
@@ -15,8 +14,7 @@ class DogParksController < ApplicationController
       format.json { render json: @dog_parks }
     end
   end
-  # GET /dog_parks/1
-  # GET /dog_parks/1.json
+  #Show more details about the dog park.
   def show
     @dog_park = DogPark.find(params[:id])
     @json = @dog_park.to_gmaps4rails
@@ -26,8 +24,7 @@ class DogParksController < ApplicationController
     end
   end
 
-  # GET /dog_parks/new
-  # GET /dog_parks/new.json
+  #Add a dog park in the database
   def new
     @dog_park = DogPark.new
 

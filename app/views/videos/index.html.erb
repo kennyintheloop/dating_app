@@ -19,7 +19,6 @@
           <dt><%= video.video_title %></dt>
           <iframe width="420" height="315" src="http://www.youtube.com/embed/<%= video.video_link %>" frameborder="0" allowfullscreen></iframe>
           <dd><%= video.video_numb_view %></dd>
-          <td><%= link_to 'Show', video %></td>
         <% if video.user_id == current_user.id %>
         <td><%= link_to 'Edit', edit_video_path(video) %></td>
         <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -31,7 +30,7 @@
     <% end %>
     <br />
 
-<%= link_to 'New Video', new_video_path %>
+<%= link_to 'Post a new video', new_video_path %>
 <% else %>
 <h1>Please sign in to see videos</h1>
 <% end %>

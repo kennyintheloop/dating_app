@@ -1,4 +1,5 @@
 class PetDetail < ActiveRecord::Base
+  #Vadliates attachments via paperclip gem.
   attr_accessible :age, :desc, :fav_park, :fav_toy, :gender, :homepark, :name, :pet_type, :kind1, :kind2, :user_id,:photo
   validates :user_id, :presence =>true
   belongs_to :users
