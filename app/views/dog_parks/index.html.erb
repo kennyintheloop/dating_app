@@ -14,17 +14,17 @@
         <dl class="palette palette-info">
           <dd>Address: <%= dog_park.address %></dd>
           <iframe width="450" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/?q=<%= dog_park.latitude %>,<%= dog_park.longitude %>&amp;ie=UTF8&amp;t=m&amp;z=14&amp;ll=<%= dog_park.latitude %>,<%= dog_park.longitude %>&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/?q=<%= dog_park.latitude %>,<%= dog_park.longitude %>&amp;ie=UTF8&amp;t=m&amp;z=14&amp;ll=<%= dog_park.latitude %>,<%= dog_park.longitude %>&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>
-          <td><%= @votes %> likes</td>
+          <td><p id='liker_<%= dog_park.id %>'><%= @votes %> likes </p></td>
           <% if @my_like.present? %>
-          <p>LIKED!</p>
+          <p>I liked this park!</p>
           <% else %>
-          <td><%= button_to 'Like this park',{
+          <td><div id='like_button_<%= dog_park.id %>'><%= button_to 'Like this park',{
           :controller => :park_votes,
           :user_id => current_user.id,
           :park_id => dog_park.id,
-          :rating => 5 }, :method => :post %></td>
+          :rating => 5 }, :method => :post, remote: true %></div></td>
           <%end %>
-        <td><%= link_to 'Destroy', dog_park, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Not a correct location? Delete it!', dog_park, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </dl>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <% if current_user.present? %>
-<h1>Listing photo_albums</h1>
+<h1>Check out photos taken by users</h1>
 <% @photo_albums.each do |photo_album| %>
 <% @user_d = UserDetail.where("user_id = ?", photo_album.user_id).first %>
 <% @user_main = User.find(photo_album.user_id) %>

@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
     #validates :email, uniqueness: true, presence:true
   end
   has_many :pet_details
+  has_many :dog_parks, :through => :park_vote
   has_one :user_details
   validates :email, :uniqueness => true
 end

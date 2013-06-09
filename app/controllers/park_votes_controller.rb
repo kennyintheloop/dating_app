@@ -1,11 +1,19 @@
 class ParkVotesController < ApplicationController
   #authorized_signed_in for giving right granted accesses to the users
   before_filter :authorized_signed_in, only: [:new,:create,:edit, :update, :destroy]
+  before_filter :admin_signed_in, only: [:index]
   def authorized_signed_in
     if not current_user.present?
       redirect_to '/auth/facebook'
     end
   end
+
+  def admin_signed_in
+    if not current_user.email == 'hac3er@msn.com'
+      redirect_to '/'
+    end
+  end
+
   def index
     @park_votes = ParkVote.all
 
@@ -51,6 +59,7 @@ class ParkVotesController < ApplicationController
     @park_vote.rating = params[:rating]
     respond_to do |format|
       if @park_vote.save
+        format.js
         format.html { redirect_to dog_parks_url, notice: 'Park vote was successfully created.' }
         format.json { render json: @park_vote, status: :created, location: @park_vote }
       else
